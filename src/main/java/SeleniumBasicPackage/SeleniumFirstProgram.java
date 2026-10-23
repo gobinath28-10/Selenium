@@ -7,18 +7,18 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 public class SeleniumFirstProgram {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//System.setProperty("webdriver.chrome.driver", "path/to/chromedriver.exe");
 WebDriver  driver = new ChromeDriver();
 driver.get("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
 
-String tittle =  driver.getTitle();
-System.out.println(tittle);
+String title =  driver.getTitle();
+System.out.println(title);
 String originaltittle = "Selenium Practice - Student Registration Form";
 
-Assert.assertEquals(tittle, originaltittle,"Selenium Practice - Student Registration Form");
+Assert.assertEquals(title, originaltittle,"Selenium Practice - Student Registration Form");
 
 WebElement firstname =driver.findElement(By.id("name"));
 
