@@ -73,9 +73,9 @@ WebElement checkbox = wait.until(ExpectedConditions.elementToBeClickable(By.xpat
 checkbox.click();
 
 //Navigation 
-driver.navigate().to("https://www.amazon.in/");
-Thread.sleep(2000);
-driver.navigate().back();
+//driver.navigate().to("https://www.amazon.in/");
+//Thread.sleep(2000);
+//driver.navigate().back();
 //Thread.sleep(5000);
 //driver.navigate().forward();
 //Thread.sleep(3000);
@@ -90,15 +90,17 @@ dropdown.selectByValue("Haryana");
 WebElement state = driver.findElement(By.id("city"));
 Select citydropdown = new Select(state);
 citydropdown.selectByVisibleText("Lucknow");
-Thread.sleep(5000);
+Thread.sleep(2000);
 //citydropdown.selectByValue("Agra");
 
 WebElement element = driver.findElement(By.xpath("//button[starts-with(@class,'accordion-button collapsed')][1]"));
 element.click();
 
-WebElement text = driver.findElement(By.xpath("//a[@href='text-box.php']]"));
+WebElement text = driver.findElement(By.xpath("//a[@href='text-box.php']"));
 text.click();
 
+WebElement name = driver.findElement(By.xpath("/html/body/main/div/div/div[2]/form/div[1]/div/input"));
+name.sendKeys("Gobi");
 //driver.quit();
 
 //td[@class='day' and text()='24']
