@@ -100,7 +100,7 @@ WebElement text = driver.findElement(By.xpath("//a[@href='text-box.php']"));
 text.click();
 
 WebElement name = driver.findElement(By.xpath("/html/body/main/div/div/div[2]/form/div[1]/div/input"));
-name.sendKeys("Gobi");
+name.sendKeys("XYZ");
 //driver.quit();
 
 //td[@class='day' and text()='24']
