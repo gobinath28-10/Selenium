@@ -90,7 +90,7 @@ dropdown.selectByValue("Haryana");
 WebElement state = driver.findElement(By.id("city"));
 Select citydropdown = new Select(state);
 citydropdown.selectByVisibleText("Lucknow");
-Thread.sleep(3000);
+Thread.sleep(5000);
 //citydropdown.selectByValue("Agra");
 
 WebElement element = driver.findElement(By.xpath("//button[starts-with(@class,'accordion-button collapsed')][1]"));
