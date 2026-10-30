@@ -1,27 +1,37 @@
 package SeleniumBasicPackage;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
-import org.openqa.selenium.support.ui.Select;
-
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 
 public class SeleniumFirstProgram {
 	
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
 		// TODO Auto-generated method stub
 		//System.setProperty("webdriver.chrome.driver", "path/to/chromedriver.exe");
 
 WebDriver  driver = new ChromeDriver();
 WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
 driver.get("https://www.tutorialspoint.com/selenium/practice/selenium_automation_practice.php");
+
+driver.manage().window().maximize();
+
+
 
 String title =  driver.getTitle();
 System.out.println(title);
@@ -101,6 +111,97 @@ text.click();
 
 WebElement name = driver.findElement(By.id("fullname"));
 name.sendKeys("XYZ");
+
+Point location= name.getLocation();
+System.out.println(location);
+
+int xvaliue = location.getX();
+int yvalue = location.getY();
+
+System.out.println(xvaliue);
+System.out.println(yvalue);
+System.out.println("x =>"+ xvaliue + " Y =>" + yvalue );
+
+WebElement button = driver.findElement(By.cssSelector("input.btn.btn-primary"));
+
+//2. Get the specific CSS property value
+String fontSize = button.getCssValue("font-size");
+String color = button.getCssValue("color");
+
+System.out.println(fontSize);
+System.out.println(color);
+
+
+TakesScreenshot ts = (TakesScreenshot) driver;
+
+File source = ts.getScreenshotAs(OutputType.FILE);
+File destination = new File("./Screenshots/image.png");
+FileHandler.copy(source, destination);
+
+try {
+    org.openqa.selenium.io.FileHandler.copy(source, destination);
+    System.out.println("Screenshot captured successfully!");
+} catch (java.io.IOException e) {
+    System.out.println("Failed to save screenshot: " + e.getMessage());
+}
+
+WebElement textform = driver.findElement(By.id("TextForm"));
+
+File source1 = textform.getScreenshotAs(OutputType.FILE);
+File destination1 = new File("./Screenshots/image.png");
+FileHandler.copy(source1, destination1);
+
+WebElement Ele_acc = driver.findElement(By.className("accordion-button"));
+Ele_acc.click();
+
+WebElement fram_ale = driver.findElement(By.id("headingThree"));
+fram_ale.click();
+
+WebElement alert = driver.findElement(By.xpath("//a[@href=\"alerts.php\"]"));
+alert.click();
+
+WebElement alertbutt = driver.findElement(By.xpath("//button[@onclick=\"showAlert()\"]"));
+alertbutt.click();
+
+Thread.sleep(3000);
+
+driver.switchTo().alert().accept();
+
+
+//WebElement alertbuttcan = driver.findElement(By.xpath("//button[@onclick=\"myDesk()\"]"));
+//alertbuttcan.click();
+
+Thread.sleep(3000);
+
+driver.switchTo().alert().dismiss();
+
+WebElement alertbutttext = driver.findElement(By.xpath("//button[@onclick=\"myPromp()\"]"));
+alertbutttext.click();
+
+WebDriverWait wai1t = new WebDriverWait(driver, Duration.ofSeconds(10));
+wai1t.until(ExpectedConditions.alertIsPresent());
+
+Alert alertmess =driver.switchTo().alert();
+
+
+
+String inputVariable = "Hello from Selenium 4!";
+
+alertmess.sendKeys(inputVariable);
+
+Thread.sleep(5000);
+
+alertmess.accept();
+
+
+
+
+
+
+
+//location.
+
+
 
 //WebElement mail = driver.findElement(By.xpath(""));
 //mail.sendKeys("abcxyz@gmail.com");
