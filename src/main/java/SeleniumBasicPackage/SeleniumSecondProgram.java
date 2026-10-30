@@ -40,7 +40,7 @@ Alert alert1 = driver.switchTo().alert();
 
 alert1.sendKeys("Hi");
 
-Thread.sleep(3000);
+Thread.sleep(4000);
 
 alert1.accept();
 
