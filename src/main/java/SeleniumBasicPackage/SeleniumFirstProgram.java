@@ -53,16 +53,16 @@ email.clear();
 
 email.sendKeys("testemail@gmail.com");
 
-WebElement malebutt =driver.findElement(By.name("gender"));
+WebElement malebutton =driver.findElement(By.name("gender"));
 
- boolean beforeclick = malebutt.isDisplayed();
-malebutt.click();
+ boolean beforeclick = malebutton.isDisplayed();
+malebutton.click();
 
-boolean answer=malebutt.isDisplayed();
+boolean answer=malebutton.isDisplayed();
 
 System.out.println(beforeclick);
 
-boolean enable=malebutt.isSelected();
+boolean enable=malebutton.isSelected();
 
 System.out.println(enable);
 
