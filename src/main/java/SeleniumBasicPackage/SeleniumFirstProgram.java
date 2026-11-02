@@ -168,8 +168,8 @@ Thread.sleep(3000);
 driver.switchTo().alert().accept();
 
 
-//WebElement alertbuttcan = driver.findElement(By.xpath("//button[@onclick=\"myDesk()\"]"));
-//alertbuttcan.click();
+WebElement alertbuttcan = driver.findElement(By.xpath("//button[@onclick=\"myDesk()\"]"));
+alertbuttcan.click();
 
 Thread.sleep(3000);
 
@@ -182,6 +182,11 @@ WebDriverWait wai1t = new WebDriverWait(driver, Duration.ofSeconds(10));
 wai1t.until(ExpectedConditions.alertIsPresent());
 
 Alert alertmess =driver.switchTo().alert();
+
+Thread.sleep(3000);
+
+String alertText = alertmess.getText();
+System.out.println("Alert text is: " + alertText);
 
 
 
